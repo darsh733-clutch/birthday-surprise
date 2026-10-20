@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Baccha 💗</title>
+<style>
+:root{--pink:#ff70ae;--deep:#a43a78}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#542544;background:radial-gradient(circle at top left,#ffe2ef,transparent 42%),linear-gradient(135deg,#fff7fb,#f4edff);overflow-x:hidden}
+main{width:min(760px,92%);margin:0 auto;padding:34px 0 52px;text-align:center;position:relative;z-index:1}
+.pill{display:inline-block;background:#ffffffc9;border:1px solid #ffd0e4;border-radius:999px;padding:8px 14px;font-size:.85rem}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);line-height:1.05;margin:18px 0 10px;color:var(--deep)}
+.sub{font-size:1.06rem;line-height:1.75;max-width:590px;margin:0 auto 22px}
+.card{background:#ffffffdf;backdrop-filter:blur(10px);border:1px solid #fff;border-radius:26px;padding:clamp(20px,5vw,38px);box-shadow:0 18px 55px #bd76a31c;margin:24px 0}
+.envelope{font-size:4rem;display:block;animation:bob 2s ease-in-out infinite}
+button{border:0;border-radius:999px;padding:14px 20px;font-weight:750;font-size:1rem;cursor:pointer;transition:transform .2s,box-shadow .2s;margin:7px;max-width:100%}
+button:hover{transform:translateY(-2px);box-shadow:0 8px 22px #a43a7830}
+.primary{background:linear-gradient(135deg,#ff77ad,#b18af5);color:white}
+.secondary{background:#fff0f6;color:#a43a78;border:1px solid #ffd0e4}
+.hidden{display:none!important}
+.letter{text-align:left;line-height:1.9;font-size:1.02rem;white-space:pre-line;min-height:100px}
+.signature{text-align:right;font-weight:800;color:var(--deep);margin-top:18px}
+.buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin-top:24px}
+.final-title{font-size:clamp(1.8rem,6vw,3rem);color:var(--deep);margin:10px 0}
+.bouquet{font-size:clamp(4rem,16vw,7rem);animation:bloom .8s ease-out both;filter:drop-shadow(0 8px 12px #ff8bb444)}
+.float{position:fixed;bottom:-35px;z-index:0;pointer-events:none;animation:floatUp linear forwards}
+.cry{font-size:5rem;animation:cry .7s ease-in-out infinite alternate}
+@keyframes bob{50%{transform:translateY(-9px) rotate(3deg)}}
+@keyframes bloom{0%{transform:scale(.1) rotate(-30deg);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+@keyframes cry{to{transform:translateY(-8px) rotate(-5deg)}}
+footer{margin-top:28px;font-size:.82rem;opacity:.65}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style></head>
+<body><main>
+<span class="pill">✨ Ek chhota sa surprise, sirf meri Baccha ke liye ✨</span>
+<h1>Happy Birthday,<br><span id="herName">Meri Baccha</span> 💗</h1>
+<p class="sub">Aaj meri favourite baccha ka birthday haiii! 🥹🎂 Ab smile kar, madam. Aaj ka din tera hai! 🌷</p>
+<section class="card" id="intro"><span class="envelope">💌</span><h2>Ek letter, dil se — tere liye</h2>
+<p class="sub">Padhna poora, okay? Beech mein bhaagna allowed nahi hai, Baccha 😂💗</p>
+<button class="primary" onclick="openLetter()">Open your letter 💌</button></section>
+<section class="card hidden" id="letterCard"><div class="letter" id="letterText"></div>
+<div class="signature hidden" id="signature">Tera Baccha… aur kabhi-kabhi tera “Sir” 😂💗</div>
+<div class="buttons hidden" id="choices">
+<button class="primary" onclick="showLove()">Thank you & love you so much 💗</button>
+<button class="secondary" onclick="showRude()">No, thank you 🙄</button></div></section>
+<section class="card hidden" id="finale"><div class="bouquet">💐</div>
+<h2 class="final-title">BESTIES FOREVER, BACCHA 💗</h2>
+<p class="sub">Love you loads, meri baccha! 🫶🏻💞</p>
+<p class="letter" style="text-align:center">Thank you meri life ka itna special part hone ke liye. Tu mere liye sirf bestie nahi, meri favourite person bhi hai. Teri smile hamesha bani rahe, tere saare dreams poore hon, aur humari ye cute si bond hamesha aisi hi rahe. Happy Birthday, Baccha! 🥹🎂💖</p>
+<button class="primary" onclick="celebrate()">More hearts please 💖</button></section>
+<section class="card hidden" id="rude"><div class="cry">😭</div>
+<h2 class="final-title">BACCHAAA, TU SO RUDE HAI 😭💔</h2>
+<p class="sub">Itna pyaara letter likha, itne emotions daale, aur madam ne “No, thank you” bol diya?! 😭 Sir is disappointed. Bestie court mein milna ab 😂⚖️💗</p>
+<button class="primary" onclick="backToLetter()">Achha chal, ek aur chance 🥺</button></section>
+<footer>Made with lots of pyaar, just for you ✨</footer>
+</main>
+<script>
+const name=new URLSearchParams(location.search).get('name');
+if(name)document.getElementById('herName').textContent=name.replace(/[<>]/g,'').slice(0,35);
+const message=`HAPPYYYY BIRTHDAYYYY MERI BACCHAAA! 🎂💗😭🫶🏻
+
+Pata hai, main hamesha shayad itne achhe se express nahi kar pata ki tu mere liye kitni special hai, isliye aaj socha ek chhota sa surprise bana hi doon. Aur haan, itni mehnat ki hai toh poora padhna, madam. Skip kiya toh complaint karunga 😂💌
+
+Honestly, I’m SO grateful ki tu meri life mein hai. Tere saath baat karna, random bakwaas karna, ek dusre ko tease karna, aur chhoti-chhoti baatein share karna — ye sab mere din ko genuinely better bana deta hai. Kabhi tu mujhe “baccha” bolti hai, kabhi “sir” 😂😭 aur main bas sochta hoon ki tu kitni alag aur special hai mere liye.
+
+Tu meri bestie hai, meri favourite person, aur meri life ka woh part jise main genuinely bohot value karta hoon. Tere saath jo bond hai na, woh mere liye bohot precious hai. Main chahta hoon ki tu hamesha khush rahe, apne dreams achieve kare, aur jab bhi life difficult lage, tujhe yaad rahe ki koi hai jo teri care karta hai aur tere liye cheer karega. 🫶🏻🌷
+
+Thank you meri baatein sunne ke liye, mujhe tolerate karne ke liye 😂, meri life mein itni saari smiles laane ke liye, aur bas TU hone ke liye. I might not say it perfectly every time, but I really, really care about you. Teri happiness mere liye matter karti hai, Baccha. 💗
+
+I hope hum aise hi ek dusre ko tang karte rahein, haste rahein, support karte rahein, aur humari friendship/bond time ke saath aur strong hoti rahe. No matter how busy life gets, I hope we always keep this special connection. 🧿💞
+
+Aaj ke din bas ek baat yaad rakh: YOU ARE SO SO SPECIAL. You deserve happiness, peace, success, endless smiles, and all the good things life can give you. Cake kha, photos le, enjoy kar, aur aaj bilkul tension mat lena! 🥳🎂
+
+I LOVE YOU SO MUCH, MERI BACCHAAA — meri favourite bestie. Thank you for being in my life. Happy Birthday once againnn! 💗💐🫶🏻`;
+let typingTimer;
+function openLetter(){document.getElementById('intro').classList.add('hidden');document.getElementById('letterCard').classList.remove('hidden');const el=document.getElementById('letterText');el.textContent='';document.getElementById('signature').classList.add('hidden');document.getElementById('choices').classList.add('hidden');let i=0;clearInterval(typingTimer);typingTimer=setInterval(()=>{el.textContent+=message[i];i++;if(i>=message.length){clearInterval(typingTimer);document.getElementById('signature').classList.remove('hidden');document.getElementById('choices').classList.remove('hidden');burst('💗',14)}},18)}
+function hideCards(){['intro','letterCard','finale','rude'].forEach(id=>document.getElementById(id).classList.add('hidden'))}
+function showLove(){hideCards();document.getElementById('finale').classList.remove('hidden');burst('💖',45);setTimeout(()=>burst('🌸',18),500)}
+function showRude(){hideCards();document.getElementById('rude').classList.remove('hidden');burst('😭',15)}
+function backToLetter(){hideCards();document.getElementById('letterCard').classList.remove('hidden')}
+function burst(symbol,count){for(let i=0;i<count;i++){const s=document.createElement('span');s.className='float';s.textContent=symbol;s.style.left=Math.random()*100+'vw';s.style.fontSize=(18+Math.random()*24)+'px';s.style.animationDuration=(3+Math.random()*4)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),7500)}}
+function celebrate(){burst(['💗','💖','💕','🌷','✨'][Math.floor(Math.random()*5)],35)}
+setTimeout(()=>burst('✨',8),400);
+</script></body></html>
